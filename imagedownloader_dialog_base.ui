@@ -1,0 +1,1590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ImageDownloaderDialogBase</class>
+ <widget class="QDialog" name="ImageDownloaderDialogBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>486</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Image Downloader</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #000815;
+font-family: sans-serif;</string>
+  </property>
+  <widget class="QFrame" name="mainContainer">
+   <property name="geometry">
+    <rect>
+     <x>-1</x>
+     <y>-1</y>
+     <width>701</width>
+     <height>450</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QFrame" name="NavBar">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>700</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>700</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="authentificationItem">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>150</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>150</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>sans-serif</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	background-color: #123;
+	color: #f4f4f4;
+	border: none;
+}
+
+QLabel:hover{
+	background-color: #000815;
+	border-bottom: 2px solid #ff9f00;
+}</string>
+     </property>
+     <property name="text">
+      <string>Authentification</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="indexNavItem">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>10</y>
+       <width>150</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>150</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>sans-serif</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	background-color: #123;
+	color: #f4f4f4;
+	border: none;
+}
+
+QLabel:hover{
+	background-color: #000815;
+	border-bottom: 2px solid #ff9f00;
+}</string>
+     </property>
+     <property name="text">
+      <string>Index processing</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="downloadNavItem">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>150</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>150</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>sans-serif</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	background-color: #123;
+	color: #f4f4f4;
+	border: none;
+}
+
+QLabel:hover{
+	background-color: #000815;
+	border-bottom: 2px solid #ff9f00;
+}</string>
+     </property>
+     <property name="text">
+      <string>Download image</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="logoutBtn">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>10</y>
+       <width>55</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>55</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>55</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>sans-serif</family>
+       <pointsize>8</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	background-color: #123;
+	color: #f4f4f4;
+	border: none;
+}
+
+QLabel:hover{
+	background-color: #012;
+	color: #ff9f00;
+}R</string>
+     </property>
+     <property name="text">
+      <string>Log out</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="Body">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>50</y>
+      <width>701</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QStackedWidget" name="Pages">
+     <property name="geometry">
+      <rect>
+       <x>-1</x>
+       <y>-1</y>
+       <width>701</width>
+       <height>411</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="signUpPage">
+      <widget class="QFrame" name="loginContainer_2">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>40</y>
+         <width>361</width>
+         <height>331</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #f4f4f4;
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_18">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>361</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>17</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255,180,0,0.8);
+color: #123;
+border-bottom: 3px solid rgba(255,180,0,0.6);</string>
+        </property>
+        <property name="text">
+         <string>Sign Up</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="emailSUInput">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>110</y>
+          <width>301</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+	background-color: #fff;
+	border: 1px solid #d1d1d1;
+	padding-left: 8px;
+	color: #012;
+border-radius: 5px;
+}
+
+QLineEdit:hover {
+	border-color: #ff9f00;
+}
+
+QLineEdit:focus {
+	border-color: #ff9f00;
+}
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>example@abc.xyz</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="passwordSUInput">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>190</y>
+          <width>301</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+	background-color: #fff;
+	border: 1px solid #d1d1d1;
+	padding-left: 8px;
+	color: #012;
+border-radius: 5px;
+}
+
+QLineEdit:hover {
+	border-color: #ff9f00;
+}
+
+QLineEdit:focus {
+	border-color: #ff9f00;
+}
+</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>password</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>80</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;
+background-color: #00000000;</string>
+        </property>
+        <property name="text">
+         <string>Email</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>160</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;
+background-color: #00000000;</string>
+        </property>
+        <property name="text">
+         <string>Password</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="submitSUBtn">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>260</y>
+          <width>301</width>
+          <height>44</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>44</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>44</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	background-color: rgba(255,180,0,1);
+	color: #012;
+}
+
+QLabel:hover{
+	background-color: rgba(255,180,0,0.8);
+	color: #000815;
+}</string>
+        </property>
+        <property name="text">
+         <string>Submit</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="loginPage">
+      <widget class="QFrame" name="loginContainer">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>30</y>
+         <width>361</width>
+         <height>351</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #f4f4f4;
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>361</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>17</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #9ab;
+color: #123;
+border-bottom: 3px solid #cde;</string>
+        </property>
+        <property name="text">
+         <string>Login</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="loginInput">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>110</y>
+          <width>301</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+	background-color: #fff;
+	border: 1px solid #d1d1d1;
+	padding-left: 8px;
+	color: #012;
+border-radius: 5px;
+}
+
+QLineEdit:hover {
+	border-color: #ff9f00;
+}
+
+QLineEdit:focus {
+	border-color: #ff9f00;
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>login</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="passwordInput">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>190</y>
+          <width>301</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+	background-color: #fff;
+	border: 1px solid #d1d1d1;
+	padding-left: 8px;
+	color: #012;
+border-radius: 5px;
+}
+
+QLineEdit:hover {
+	border-color: #ff9f00;
+}
+
+QLineEdit:focus {
+	border-color: #ff9f00;
+}
+</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>password</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>80</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;
+background-color: #00000000;</string>
+        </property>
+        <property name="text">
+         <string> Username</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>160</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;
+background-color: #00000000;</string>
+        </property>
+        <property name="text">
+         <string>Password</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="loginBtn">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>260</y>
+          <width>301</width>
+          <height>44</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>44</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>44</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	background-color: #234;
+	color: #f4f4f4;
+}
+
+QLabel:hover{
+	background-color: #345;
+	color: #f2f2f2;
+}</string>
+        </property>
+        <property name="text">
+         <string>Login</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="createAccountLink">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>310</y>
+          <width>361</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: #012;
+background-color: #00000000;
+}
+
+QLabel:hover {
+	color: #345;
+}</string>
+        </property>
+        <property name="text">
+         <string>Create an account</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="dowloadPage">
+      <widget class="QFrame" name="settingsContainer">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>301</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #f4f4f4;
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>301</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #123;</string>
+        </property>
+        <property name="text">
+         <string>Data sets</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>70</y>
+          <width>251</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+	background-color: #012;
+	border: 1px solid #d1d1d1;
+	padding-left: 8px;
+	color: #f4f4f4;
+}
+
+QComboBox:hover {
+	border-color: #ff9f00;
+	background-color : #234;
+	color: #fff;
+}
+
+QComboBox:focus {
+	border-color: #ff9f00;
+}
+
+QListView
+{
+	background-color : #012;
+	color: #f4f4f4;
+}
+</string>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QSlider" name="horizontalSlider">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>140</y>
+          <width>201</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QSlider::handle{
+  	background-color: #345;
+	height: 20px;
+	width:10px;
+}
+
+QSlider::groove {
+border: 1px solid #012;
+border-radius: 2px;
+height: 10px;
+}
+
+QSlider::sub-page {
+border: 1px solid #ff9f00;
+background-color: rgba(255,180,0,0.8);
+height: 20px;
+}
+
+QSlider::add-page {
+border: 1px solid #345;
+background-color: rgba(255,180,0,0.2);
+height: 20px;
+}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>110</y>
+          <width>101</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;</string>
+        </property>
+        <property name="text">
+         <string>Cloud couverage</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="cloudLabel">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>130</y>
+          <width>40</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;
+border: 2px solid #012;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+background-color:  rgba(255,180,0,0.8);</string>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>40</y>
+          <width>101</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;</string>
+        </property>
+        <property name="text">
+         <string>Satelitte</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="outputContainer">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>10</y>
+         <width>341</width>
+         <height>331</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #f4f4f4;
+
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>341</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;
+background-color: rgba(255,180,0,0.9);
+border-bottom: 3px solid rgba(255,180,0,0.4);</string>
+        </property>
+        <property name="text">
+         <string>Output</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="resultTable">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>321</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QTableWidget{
+    background-color: #fff;
+}
+
+QTableWidget::item {
+    color: #012;
+}
+
+QTableWidget::item:hover {
+    color: #012;
+	background-color: rgba(255,180,0,0.6);
+}
+
+QTableWidget::item:selected {
+    color: #012;
+	background-color: rgba(255,180,0,0.6);
+}</string>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="rowCount">
+         <number>0</number>
+        </property>
+        <property name="columnCount">
+         <number>2</number>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>20</number>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>159</number>
+        </attribute>
+        <attribute name="horizontalHeaderHighlightSections">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderMinimumSectionSize">
+         <number>25</number>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>28</number>
+        </attribute>
+        <attribute name="verticalHeaderHighlightSections">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
+        <column/>
+        <column/>
+       </widget>
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>50</y>
+          <width>321</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #123;</string>
+        </property>
+        <property name="text">
+         <string>  Avaible Images</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="downloadBtn">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>360</y>
+         <width>341</width>
+         <height>44</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>44</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>44</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>sans-serif</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+	background-color: #ff9f00;
+	color: #012;
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Download</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="searchBtn">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>360</y>
+         <width>301</width>
+         <height>44</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>44</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>44</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>sans-serif</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+	background-color: #234;
+	color: #f4f4f4;
+}
+
+QLabel:hover{
+	background-color: #345;
+	color: #f2f2f2;
+}</string>
+       </property>
+       <property name="text">
+        <string>Search Data</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QFrame" name="dateContainer">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>210</y>
+         <width>301</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #f4f4f4;
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>301</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #123;</string>
+        </property>
+        <property name="text">
+         <string>Date</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="dateEdit">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>50</y>
+          <width>201</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+	background-color: #012;
+	border: 1px solid #d1d1d1;
+	padding-left: 8px;
+	color: #f4f4f4;
+}
+
+QComboBox:hover {
+	border-color: #ff9f00;
+}
+
+QComboBox:focus {
+	border-color: #ff9f00;
+}</string>
+        </property>
+        <property name="dateTime">
+         <datetime>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>1</month>
+          <day>1</day>
+         </datetime>
+        </property>
+        <property name="displayFormat">
+         <string>dd-MMM-yyyy</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>50</y>
+          <width>41</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;</string>
+        </property>
+        <property name="text">
+         <string>From</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="dateEdit_2">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>90</y>
+          <width>201</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+	background-color: #012;
+	border: 1px solid #d1d1d1;
+	padding-left: 8px;
+	color: #f4f4f4;
+}
+
+QComboBox:hover {
+	border-color: #ff9f00;
+}
+
+QComboBox:focus {
+	border-color: #ff9f00;
+}</string>
+        </property>
+        <property name="dateTime">
+         <datetime>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>1</month>
+          <day>1</day>
+         </datetime>
+        </property>
+        <property name="displayFormat">
+         <string>dd-MMM-yyyy</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>90</y>
+          <width>41</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #012;</string>
+        </property>
+        <property name="text">
+         <string>To</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="indexPage">
+      <widget class="QFrame" name="NDVIContainer">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>301</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #f4f4f4;
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>301</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #123;
+background-color: rgba(250,180,0,0.6);</string>
+        </property>
+        <property name="text">
+         <string>NDVI</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="NDVIContainer_2">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>130</y>
+         <width>301</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #f4f4f4;
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>301</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>sans-serif</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #123;
+background-color: rgba(250,180,0,0.6);</string>
+        </property>
+        <property name="text">
+         <string>MSI</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>460</y>
+     <width>701</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #101825;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>291</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>sans-serif</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ff9f00;</string>
+    </property>
+    <property name="text">
+     <string> El  Khayari Safaa &amp;  Moumen Mohamed  &amp;  Saouidi Ayoub</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
