@@ -33,12 +33,15 @@ from .resources import *
 # Import the code for the dialog
 from .imagedownloader_dialog import ImageDownloaderDialog
 import os.path
+from math import sqrt 
 
 # # LANDSATXPLORE
 from landsatxplore.api import API
 from landsatxplore.earthexplorer import EarthExplorer
 # import openapi
 import requests , zipfile, io
+import shutil
+import netCDF4
 from tqdm import tqdm
 import wget
 import urllib
@@ -262,7 +265,7 @@ class ImageDownloader:
             startDate=self.dlg.dateEdit.date().toString('yyyyMMdd')
             endDate=self.dlg.dateEdit_2.date().toString('yyyy-MM-dd')
             cloud=self.dlg.horizontalSlider.value()
-            dataSet = 'Sentinel-3'
+            dataSet = self.dlg.comboBox.currentText()
 
             self.patchUser(dataSet,var_latitude,var_longitude,cloud,startDate)
 
@@ -275,11 +278,11 @@ class ImageDownloader:
             print(response.json())
             imagesPackage = response.json()
             if response.status_code == 200:
+                self.dlg.resultTable.clear()
                 if imagesPackage :     
                     i=0
-                    self.dlg.resultTable.clear()
                     # HEADER
-                    self.dlg.resultTable.setHorizontalHeaderLabels(['ID', 'Name', 'Downloaded']);
+                    self.dlg.resultTable.setHorizontalHeaderLabels(['Name', 'Downloaded']);
                     for image in imagesPackage:
                         print(image)
                         self.dlg.resultTable.insertRow(self.dlg.resultTable.rowCount())
@@ -321,6 +324,8 @@ class ImageDownloader:
 
 
     def downloadData(self,evt):
+        global name
+        global zipName
         if evt.button() == QtCore.Qt.LeftButton:
             if self.dlg.resultTable.selectionModel().hasSelection() :
                 selectedRow = self.dlg.resultTable.currentRow()
@@ -328,14 +333,20 @@ class ImageDownloader:
                 print(name)
                 endpoint = "https://satimage-api.herokuapp.com/images/"+name+"/download"
                 headers = {'accept': 'application/json'}
-                response = requests.get(url=endpoint,stream=True)
+                response = requests.get(url=endpoint)
                 print(response)
                 # WORKING BUT NOT GOOD
-                # zipName = os.path.join('E:\\Data',name)
-                # zipFile = open(zipName,"wb")
-                # zipFile.write(response.content)
-                # zipFile.close()
-                
+                zipName = os.path.join('E:\\Data',name)
+                zipFile = open(zipName+'.zip',"wb")
+                zipFile.write(response.content)
+                zipFile.close()
+                zipF = os.path.join('E:\\Data',name+'.zip')
+                shutil.unpack_archive(zipF, zipName+'_unpacked')
+                # 
+                self.dlg.ndviLabel.setText(str(round(self.calculateNDVI(),2)))
+                self.dlg.msaviLabel.setText(str(round(self.calculateMSAVI(),2)))
+
+                # self.calculateNDVI()
 
 
     def exportFiles(self, file_name):
@@ -346,20 +357,49 @@ class ImageDownloader:
             print(filename)
 
 
-    def NDVI_5(self,Band4,Band3,OutputNDVI):
-         input_rasterA = QgsRasterLayer(Band4, 'Raster1')
-          #QgsProject.instance().addMapLayer(input_rasterA)
-        
-         input_rasterB = QgsRasterLayer(Band3, 'Raster2')
-         #QgsProject.instance().addMapLayer(input_rasterB)
-        
-         output_raster = OutputNDVI
-         parameters = {'INPUT_A': input_rasterA,'INPUT_B': input_rasterB,
-         'BAND_A' : 1,
-         'BAND_B' : 1,        
-         'FORMULA': "((A-B)/(A+B))",
-         'OUTPUT' : output_raster}
-         processing.runAndLoadResults('gdal:rastercalculator', parameters)
+    def calculateNDVI(self):
+        #  -- 
+        global ndvi
+        # NDVI_File = netCDF4.Dataset(zipName+"_unpacked\\"+name+'.SEN3\\NDVI.nc','r')
+        # print(NDVI_File.variables.keys())
+        # ndvi = NDVI_File.variables['NDVI']
+        # print(ndvi)
+        # B0_File = netCDF4.Dataset(zipName+"_unpacked\\"+name+'.SEN3\\B0.nc','r')
+        # print(B0_File.variables.keys())
+        # b0 = B0_File.variables['B0']
+        # print(b0)
+        B2_File = netCDF4.Dataset(zipName+"_unpacked\\"+name+'.SEN3\\B2.nc','r')
+        print(B2_File.variables.keys())
+        b2 = B2_File.variables['B2']
+        print(b2)
+        B3_File = netCDF4.Dataset(zipName+"_unpacked\\"+name+'.SEN3\\B3.nc','r')
+        print(B3_File.variables.keys())
+        b3 = B3_File.variables['B3']
+        print(b3)
+        ndvi = (b3.bandwidth - b2.bandwidth) / (b3.bandwidth + b2.bandwidth)
+        return ndvi
+
+    def calculateMSAVI(self):
+        #  -- 
+        global msavi
+        # NDVI_File = netCDF4.Dataset(zipName+"_unpacked\\"+name+'.SEN3\\NDVI.nc','r')
+        # print(NDVI_File.variables.keys())
+        # ndvi = NDVI_File.variables['NDVI']
+        # print(ndvi)
+        # B0_File = netCDF4.Dataset(zipName+"_unpacked\\"+name+'.SEN3\\B0.nc','r')
+        # print(B0_File.variables.keys())
+        # b0 = B0_File.variables['B0']
+        # print(b0)
+        B2_File = netCDF4.Dataset(zipName+"_unpacked\\"+name+'.SEN3\\B2.nc','r')
+        print(B2_File.variables.keys())
+        b2 = B2_File.variables['B2']
+        print(b2)
+        B3_File = netCDF4.Dataset(zipName+"_unpacked\\"+name+'.SEN3\\B3.nc','r')
+        print(B3_File.variables.keys())
+        b3 = B3_File.variables['B3']
+        print(b3)
+        msavi = (2 * b3.bandwidth + 1 - sqrt ((2 * b3.bandwidth + 1)*2 - 8 * (b3.bandwidth - b2.bandwidth))) / 2
+        return msavi
 
 
     def CloudCouverageDisplay(self):
@@ -367,10 +407,6 @@ class ImageDownloader:
         self.dlg.cloudLabel.setText(str(var)+'%')
 
     def run(self):
-        """Run method that performs all the real work"""
-
-        # Create the dialog with elements (after translation) and keep reference
-        # Only create GUI ONCE in callback, so that it will only load when the plugin is started
         if self.first_start == True:
             self.first_start = False
             self.dlg = ImageDownloaderDialog()
